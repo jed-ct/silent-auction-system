@@ -32,7 +32,7 @@ public class Main {
         phone.placeBid(bid3ToItem1);
 
 
-        System.out.printf("Highest Bid\n%s\n%d", phone.getHighestBid().getBidder().getName(), phone.getHighestBid().getAmount());
+        System.out.printf("Current Highest Bid on %s (%s)\n%s - %d",phone.getItemName(), phone.getLotId(), phone.getHighestBid().getBidder().getName(), phone.getHighestBid().getAmount());
 
 
 

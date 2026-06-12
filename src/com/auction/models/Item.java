@@ -1,9 +1,8 @@
 package com.auction.models;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class Item {
+public class Item implements Biddable {
     private final int lotId;
     private final String itemName;
     private final int quantity;
@@ -18,10 +17,12 @@ public class Item {
         lotIdCounter++;
     }
 
+    @Override
     public void placeBid(Bid bid) {
         bids.add(bid);
     }
 
+    @Override
     public Bid getHighestBid() {
         Bid currentHighestBid = bids.getFirst();
         for (Bid bid : bids) {
