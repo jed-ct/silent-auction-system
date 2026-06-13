@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import com.auction.exception.*;
 
 public class Item implements Biddable {
-    private final int lotId;
+    private final String lotId;
     private final String itemName;
     private final int quantity;
 
@@ -12,13 +12,10 @@ public class Item implements Biddable {
 
     private final ArrayList<Bid> bids = new ArrayList<>();
 
-    private static int lotIdCounter = 0;
-
-    public Item(String itemName, int quantity) {
+    public Item(String lotId, String itemName, int quantity) {
+        this.lotId = lotId;
         this.itemName = itemName;
         this.quantity = quantity;
-        lotId = lotIdCounter;
-        lotIdCounter++;
     }
 
     @Override
@@ -35,14 +32,14 @@ public class Item implements Biddable {
     public Bid getHighestBid() {
         Bid currentHighestBid = bids.getFirst();
         for (Bid bid : bids) {
-            if (bid.getAmount() > currentHighestBid.getAmount()) {
+            if (bid.amount() > currentHighestBid.amount()) {
                 currentHighestBid = bid;
             }
         }
         return currentHighestBid;
     }
 
-    public int getLotId() {
+    public String getLotId() {
         return lotId;
     }
 

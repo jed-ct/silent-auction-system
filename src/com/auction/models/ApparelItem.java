@@ -3,8 +3,8 @@ package com.auction.models;
 public class ApparelItem extends Item {
     private final String size;
 
-    public ApparelItem(String name, int quantity, String size) {
-        super(name, quantity);
+    public ApparelItem(String lotId, String name, int quantity, String size) {
+        super(lotId, name, quantity);
         this.size = size;
     }
 

@@ -27,7 +27,8 @@ public class Main {
         Bid bid2ToItem1 = new Bid(bidder2, 300);
         Bid bid3ToItem1 = new Bid(bidder1, 500);
 
-        TechItem phone = new TechItem("Iphone 17 Pro Max", 1, "Apple", true);
+        TechItem phone = new TechItem("D53S","Iphone 17 Pro Max", 1, "Apple", true);
+        BidRequest bidrequest = new BidRequest(bidder1, 300);
 
         try {
             phone.placeBid(bid1ToItem1);
@@ -40,8 +41,8 @@ public class Main {
         phone.placeBid(bid3ToItem1);
 
 
-        System.out.printf("Current Highest Bid on %s (%s)\n%s - %d",phone.getItemName(), phone.getLotId(), phone.getHighestBid().getBidder().getName(), phone.getHighestBid().getAmount());
-
+        System.out.printf("Current Highest Bid on %s (%s)\n%s - %d",phone.getItemName(), phone.getLotId(), phone.getHighestBid().bidder().getName(), phone.getHighestBid().amount());
+        System.out.println(bid2ToItem1.toString());
 
 
 
