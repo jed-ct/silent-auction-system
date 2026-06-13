@@ -2,6 +2,7 @@ package com.auction.main;
 
 import java.util.Scanner;
 import com.auction.models.*;
+import com.auction.exception.*;
 
 public class Main {
     private static void printMenu() {
@@ -27,6 +28,13 @@ public class Main {
         Bid bid3ToItem1 = new Bid(bidder1, 500);
 
         TechItem phone = new TechItem("Iphone 17 Pro Max", 1, "Apple", true);
+
+        try {
+            phone.placeBid(bid1ToItem1);
+        }
+        catch (ClosedBidException e) {
+            System.out.println(e.getMessage());
+        }
         phone.placeBid(bid1ToItem1);
         phone.placeBid(bid2ToItem1);
         phone.placeBid(bid3ToItem1);

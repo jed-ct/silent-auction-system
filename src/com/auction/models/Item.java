@@ -1,12 +1,16 @@
 package com.auction.models;
 
 import java.util.ArrayList;
+import com.auction.exception.*;
 
 public class Item implements Biddable {
     private final int lotId;
     private final String itemName;
     private final int quantity;
-    private ArrayList<Bid> bids = new ArrayList<>();
+
+    private AuctionStatus status = AuctionStatus.ACTIVE;
+
+    private final ArrayList<Bid> bids = new ArrayList<>();
 
     private static int lotIdCounter = 0;
 
@@ -19,7 +23,12 @@ public class Item implements Biddable {
 
     @Override
     public void placeBid(Bid bid) {
-        bids.add(bid);
+        if (status == AuctionStatus.ACTIVE) {
+            bids.add(bid);
+        }
+        else {
+            throw new ClosedBidException("The bid for the item is closed.");
+        }
     }
 
     @Override
@@ -45,5 +54,11 @@ public class Item implements Biddable {
         return quantity;
     }
 
+    public void setStatus(AuctionStatus status) {
+        this.status = status;
+    }
 
+    public AuctionStatus getStatus() {
+        return status;
+    }
 }
